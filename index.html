@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operation: Classified</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        background: #0b1017;
+        color: #dce3e9;
+        font-family: "Courier New", monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 650px;
+        background: #141d28;
+        border: 1px solid #354454;
+        padding: 35px;
+        box-shadow: 0 0 35px rgba(0,0,0,0.5);
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #354454;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+
+    .agency {
+        color: #8cabb8;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .stamp {
+        color: #e45d5d;
+        border: 2px solid #e45d5d;
+        padding: 5px 10px;
+        font-size: 11px;
+        transform: rotate(-4deg);
+        font-weight: bold;
+    }
+
+    .page {
+        display: none;
+        animation: fade 0.5s ease;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    @keyframes fade {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+        color: #e5edf3;
+        font-size: 29px;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #75c7a2;
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    p {
+        color: #b7c3cd;
+        line-height: 1.8;
+        font-size: 14px;
+    }
+
+    .message {
+        background: #0c141e;
+        border-left: 3px solid #75c7a2;
+        padding: 18px;
+        margin: 25px 0;
+        line-height: 1.8;
+        font-size: 14px;
+    }
+
+    .reference {
+        color: #71889a;
+        font-size: 11px;
+        margin-top: 25px;
+        letter-spacing: 1px;
+    }
+
+    button {
+        background: #75c7a2;
+        color: #0b1513;
+        border: none;
+        padding: 13px 22px;
+        font-family: inherit;
+        font-weight: bold;
+        cursor: pointer;
+        letter-spacing: 1px;
+        margin: 8px 5px 0 0;
+        transition: 0.2s;
+    }
+
+    button:hover {
+        background: #a0e3c2;
+        transform: translateY(-2px);
+    }
+
+    button.reject {
+        background: transparent;
+        border: 1px solid #d65d5d;
+        color: #e47777;
+    }
+
+    button.reject:hover {
+        background: #572626;
+    }
+
+    input {
+        width: 100%;
+        padding: 14px;
+        background: #0b1017;
+        border: 1px solid #526575;
+        color: #75c7a2;
+        font-family: inherit;
+        font-size: 15px;
+        margin: 15px 0;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #75c7a2;
+    }
+
+    .feedback {
+        min-height: 25px;
+        color: #e47777;
+        font-size: 13px;
+    }
+
+    .progress {
+        height: 4px;
+        background: #293746;
+        margin: 20px 0;
+    }
+
+    .progress-bar {
+        height: 4px;
+        background: #75c7a2;
+        width: 0%;
+        transition: width 0.4s;
+    }
+
+    .footer {
+        border-top: 1px solid #354454;
+        margin-top: 35px;
+        padding-top: 15px;
+        color: #627586;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .success {
+        color: #75c7a2;
+    }
+
+    @media(max-width: 500px) {
+        .container {
+            padding: 22px;
+        }
+
+        h1 {
+            font-size: 23px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top">
+        <div class="agency">
+            CENTRAL INTELLIGENCE<br>
+            OPERATIONS DIVISION
+        </div>
+        <div class="stamp">TOP SECRET</div>
+    </div>
+
+    <!-- PAGE 1: WELCOME -->
+
+    <section class="page active" id="welcome">
+
+        <p class="reference">INCOMING TRANSMISSION // 001</p>
+
+        <h1>Hello, Agent.</h1>
+
+        <div class="message">
+            <!-- EDIT YOUR WELCOME MESSAGE HERE -->
+
+            [Write your personalised mission briefing here.]
+
+            <br><br>
+
+            You have been selected for a highly confidential
+            operation. Further details will only be disclosed
+            upon acceptance.
+        </div>
+
+        <p>
+            Your participation is voluntary.
+            However, the consequences of rejection are
+            entirely your responsibility.
+        </p>
+
+        <p><b>Do you accept this mission?</b></p>
+
+        <button onclick="showPage('clue1')">
+            ACCEPT MISSION
+        </button>
+
+        <button class="reject" onclick="showPage('rejected')">
+            REJECT
+        </button>
+
+    </section>
+
+
+    <!-- PAGE 2: FIRST CLUE -->
+
+    <section class="page" id="clue1">
+
+        <p class="reference">TRANSMISSION // 002</p>
+
+        <h2>01 — INITIAL DECRYPTION</h2>
+
+        <h1>First Assignment</h1>
+
+        <div class="message">
+
+            <!-- EDIT FIRST CLUE HERE -->
+
+            [Write your first puzzle or clue here.]
+
+            <br><br>
+
+            Your answer will unlock the next transmission.
+
+        </div>
+
+        <input
+            type="text"
+            id="answer1"
+            placeholder="ENTER YOUR ANSWER"
+            autocomplete="off"
+        >
+
+        <div class="feedback" id="feedback1"></div>
+
+        <button onclick="checkAnswer(1)">
+            SUBMIT ANSWER
+        </button>
+
+    </section>
+
+
+    <!-- PAGE 3: SECOND CLUE -->
+
+    <section class="page" id="clue2">
+
+        <p class="reference">TRANSMISSION // 003</p>
+
+        <h2>02 — INTELLIGENCE VERIFICATION</h2>
+
+        <h1>Second Assignment</h1>
+
+        <div class="message">
+
+            <!-- EDIT SECOND CLUE HERE -->
+
+            [Write your second puzzle or clue here.]
+
+            <br><br>
+
+            Only a correct response will grant further clearance.
+
+        </div>
+
+        <input
+            type="text"
+            id="answer2"
+            placeholder="ENTER YOUR ANSWER"
+            autocomplete="off"
+        >
+
+        <div class="feedback" id="feedback2"></div>
+
+        <button onclick="checkAnswer(2)">
+            SUBMIT ANSWER
+        </button>
+
+    </section>
+
+
+    <!-- PAGE 4: THIRD CLUE -->
+
+    <section class="page" id="clue3">
+
+        <p class="reference">TRANSMISSION // 004</p>
+
+        <h2>03 — FINAL DECRYPTION</h2>
+
+        <h1>Final Assignment</h1>
+
+        <div class="message">
+
+            <!-- EDIT THIRD CLUE HERE -->
+
+            [Write your third puzzle or clue here.]
+
+            <br><br>
+
+            This is your final opportunity to prove your
+            capabilities, Agent.
+
+        </div>
+
+        <input
+            type="text"
+            id="answer3"
+            placeholder="ENTER YOUR ANSWER"
+            autocomplete="off"
+        >
+
+        <div class="feedback" id="feedback3"></div>
+
+        <button onclick="checkAnswer(3)">
+            SUBMIT ANSWER
+        </button>
+
+    </section>
+
+
+    <!-- REJECTION END PAGE -->
+
+    <section class="page" id="rejected">
+
+        <p class="reference">SYSTEM MESSAGE // 005</p>
+
+        <h1 style="color:#e47777">MISSION TERMINATED</h1>
+
+        <div class="message">
+            You have declined the mission.
+
+            <br><br>
+
+            Your clearance has been revoked.
+            All further transmissions have been suspended.
+
+            <br><br>
+
+            [Insert your rejection message here.]
+        </div>
+
+        <p>END OF TRANSMISSION.</p>
+
+    </section>
+
+
+    <!-- SUCCESS END PAGE -->
+
+    <section class="page" id="complete">
+
+        <p class="reference">FINAL TRANSMISSION // 006</p>
+
+        <h1 class="success">MISSION ACCOMPLISHED.</h1>
+
+        <div class="message">
+
+            Congratulations, Agent.
+
+            <br><br>
+
+            You have successfully completed all assignments.
+
+            <br><br>
+
+            <!-- EDIT YOUR FINAL MESSAGE HERE -->
+
+            [Write your final message here.]
+
+            <br><br>
+
+            FINAL LOCATION: [INSERT LOCATION]
+
+        </div>
+
+        <p class="success">
+            CLEARANCE GRANTED. AWAIT FURTHER INSTRUCTIONS.
+        </p>
+
+    </section>
+
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="footer">
+        <span>OPERATION: CLASSIFIED</span>
+        <span>AUTHORISED PERSONNEL ONLY</span>
+    </div>
+
+</div>
+
+
+<script>
+
+// =====================================
+// EDIT YOUR ANSWERS HERE
+// =====================================
+
+const answers = {
+    1: "ORION",
+    2: "42",
+    3: "MIDNIGHT"
+};
+
+// =====================================
+// PAGE NAVIGATION
+// =====================================
+
+function showPage(pageId) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageId).classList.add("active");
+
+    const progress = {
+        welcome: 0,
+        clue1: 25,
+        clue2: 50,
+        clue3: 75,
+        rejected: 0,
+        complete: 100
+    };
+
+    document.getElementById("progressBar").style.width =
+        progress[pageId] + "%";
+
+    window.scrollTo(0, 0);
+}
+
+// =====================================
+// ANSWER VERIFICATION
+// =====================================
+
+function checkAnswer(number) {
+
+    const input = document.getElementById("answer" + number);
+
+    const feedback = document.getElementById("feedback" + number);
+
+    const userAnswer = input.value.trim().toUpperCase();
+
+    const correctAnswer = answers[number].trim().toUpperCase();
+
+    if (userAnswer === correctAnswer) {
+
+        feedback.style.color = "#75c7a2";
+        feedback.textContent = "ACCESS GRANTED. TRANSMISSION UNLOCKED.";
+
+        setTimeout(() => {
+
+            if (number === 3) {
+                showPage("complete");
+            } else {
+                showPage("clue" + (number + 1));
+            }
+
+        }, 800);
+
+    } else {
+
+        feedback.style.color = "#e47777";
+        feedback.textContent =
+            "ACCESS DENIED. INCORRECT RESPONSE. TRY AGAIN.";
+
+    }
+}
+
+// Allow Enter key to submit answers
+
+document.querySelectorAll("input").forEach(input => {
+
+    input.addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+            const number = this.id.replace("answer", "");
+
+            checkAnswer(Number(number));
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
